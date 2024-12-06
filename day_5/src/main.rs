@@ -89,7 +89,7 @@ fn main() {
 
     let data = Data::from_str(&input);
 
-    part_two(&data);
+    part_two_graph(&data);
 }
 
 fn part_one(data: &Data) {
@@ -122,6 +122,55 @@ fn part_two(data: &Data) {
             assert!(data.orderings.iter().all(|ord| ord.satisfies(page_list)));
 
             sum += page_list[page_list.len() / 2].0;
+        }
+    }
+
+    dbg!(sum);
+}
+
+fn part_two_graph(data: &Data) {
+    let mut graph: petgraph::graphmap::GraphMap<usize, (), petgraph::Directed> =
+        petgraph::graphmap::GraphMap::new();
+
+    for ord in &data.orderings {
+        graph.add_edge(ord.0, ord.1, ());
+    }
+
+    let graph: petgraph::prelude::Graph<usize, (), petgraph::prelude::Directed> =
+        graph.into_graph();
+
+    let mut sum = 0;
+
+    for page_list in &data.pages {
+        if data.orderings.iter().all(|ord| ord.satisfies(page_list)) {
+        } else {
+            let filtered_graph = graph.filter_map(
+                |_, n| {
+                    if page_list.contains(&Page(*n)) {
+                        Some(n)
+                    } else {
+                        None
+                    }
+                },
+                |_, n| Some(n),
+            );
+
+            let sorted: Vec<Page> = petgraph::algo::toposort(&filtered_graph, None)
+                .expect("If this results in a cycle the input constraints are unsatisfiable")
+                .iter()
+                .map(|index| {
+                    filtered_graph
+                        .node_weight(*index)
+                        .expect("Should be in there")
+                })
+                .map(|n| Page(**n))
+                .collect();
+
+            assert!(data.orderings.iter().all(|ord| ord.satisfies(&sorted)));
+
+            assert_eq!(sorted.len(), page_list.len());
+
+            sum += sorted[sorted.len() / 2].0;
         }
     }
 
