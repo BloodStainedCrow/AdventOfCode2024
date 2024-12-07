@@ -138,7 +138,7 @@ fn main() {
 
     let time = Instant::now();
 
-    part_two_smart(&map);
+    part_two_smart_bruteforce(&map);
 
     println!("{:?}", time.elapsed());
 }
