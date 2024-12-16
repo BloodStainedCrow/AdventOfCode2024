@@ -124,6 +124,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_14"
+version = "0.1.0"
+
+[[package]]
+name = "day_15"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "strum",
+ "strum_macros",
+]
+
+[[package]]
 name = "day_2"
 version = "0.1.0"
 
@@ -246,6 +259,15 @@ checksum = "62f822373a4fe84d4bb149bf54e584a7f4abec90e072ed49cda0edea5b95471f"
 dependencies = [
  "equivalent",
  "hashbrown",
+]
+
+[[package]]
+name = "itertools"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
+dependencies = [
+ "either",
 ]
 
 [[package]]
