@@ -173,6 +173,15 @@ name = "day_2"
 version = "0.1.0"
 
 [[package]]
+name = "day_20"
+version = "0.1.0"
+dependencies = [
+ "pathfinding",
+ "strum",
+ "strum_macros",
+]
+
+[[package]]
 name = "day_3"
 version = "0.1.0"
 
