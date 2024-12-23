@@ -185,6 +185,12 @@ dependencies = [
 name = "day_21"
 version = "0.1.0"
 
+[[package]]
+name = "day_22"
+version = "0.1.0"
+dependencies = [
+ "rayon",
+]
 
 [[package]]
 name = "day_3"
