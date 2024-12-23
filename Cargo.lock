@@ -142,7 +142,7 @@ version = "0.1.0"
 dependencies = [
  "itertools",
  "pathfinding",
- "petgraph",
+ "petgraph 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "strum",
  "strum_macros",
 ]
@@ -193,6 +193,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "day_23"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "petgraph 0.6.5 (git+https://github.com/qoqosz/petgraph.git?branch=feature/maximal_cliques)",
+]
+
+[[package]]
 name = "day_3"
 version = "0.1.0"
 
@@ -208,7 +216,7 @@ dependencies = [
 name = "day_5"
 version = "0.1.0"
 dependencies = [
- "petgraph",
+ "petgraph 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -428,6 +436,15 @@ name = "petgraph"
 version = "0.6.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b4c5cc86750666a3ed20bdaf5ca2a0344f9c67674cae0515bec2da16fbaa47db"
+dependencies = [
+ "fixedbitset",
+ "indexmap",
+]
+
+[[package]]
+name = "petgraph"
+version = "0.6.5"
+source = "git+https://github.com/qoqosz/petgraph.git?branch=feature/maximal_cliques#cee17df1398adeae9f4696d3f4caba5662b37d63"
 dependencies = [
  "fixedbitset",
  "indexmap",
